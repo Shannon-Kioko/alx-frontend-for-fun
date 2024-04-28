@@ -20,7 +20,7 @@ if __name__ == '__main__':
 
     with open(sys.argv[1]) as read:
         with open(sys.argv[2], 'w') as html:
-            unordered_start, ordered_start, paragraph = False, False, False
+            unordered_list_begin, ordered_start, paragraph = False, False, False
             # bold syntax
             for line in read:
                 line = line.replace('**', '<b>', 1)
@@ -30,10 +30,10 @@ if __name__ == '__main__':
 
                 # md5
                 md5 = re.findall(r'\[\[.+?\]\]', line)
-                md5_inside = re.findall(r'\[\[(.+?)\]\]', line)
+                md5_content = re.findall(r'\[\[(.+?)\]\]', line)
                 if md5:
                     line = line.replace(md5[0], hashlib.md5(
-                        md5_inside[0].encode()).hexdigest())
+                        md5_content[0].encode()).hexdigest())
 
                 # remove the letter C
                 remove_letter_c = re.findall(r'\(\(.+?\)\)', line)
@@ -57,13 +57,13 @@ if __name__ == '__main__':
                         heading_num)
 
                 if unordered_num:
-                    if not unordered_start:
+                    if not unordered_list_begin:
                         html.write('<ul>\n')
-                        unordered_start = True
+                        unordered_list_begin = True
                     line = '<li>' + unordered.strip() + '</li>\n'
-                if unordered_start and not unordered_num:
+                if unordered_list_begin and not unordered_num:
                     html.write('</ul>\n')
-                    unordered_start = False
+                    unordered_list_begin = False
 
                 if ordered_num:
                     if not ordered_start:
@@ -74,7 +74,7 @@ if __name__ == '__main__':
                     html.write('</ol>\n')
                     ordered_start = False
 
-                if not (heading_num or unordered_start or ordered_start):
+                if not (heading_num or unordered_list_begin or ordered_start):
                     if not paragraph and length > 1:
                         html.write('<p>\n')
                         paragraph = True
@@ -87,7 +87,7 @@ if __name__ == '__main__':
                 if length > 1:
                     html.write(line)
 
-            if unordered_start:
+            if unordered_list_begin:
                 html.write('</ul>\n')
             if ordered_start:
                 html.write('</ol>\n')
