@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 """
-Markdown script using python.
+Script converts markdown to HTML.
 """
 import sys
 import os.path
