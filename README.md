@@ -98,21 +98,24 @@ guillaume@vagrant:~/$
 Spacing and new lines between HTML tags don’t need to be exactly this one
 
 ### 3. Ordered listing
-#advanced
-Improve markdown2html.py by parsing Ordered listing syntax for generating HTML:
+Improve `markdown2html.py` by parsing Ordered listing syntax for generating HTML:
 
-Syntax: (you can assume it will be strictly this syntax)
+**Syntax**: (you can assume it will be strictly this syntax)
 
 Markdown:
-
+```
 * Hello
 * Bye
+```
 HTML generated:
-
+```
 <ol>
     <li>Hello</li>
     <li>Bye</li>
 </ol>
+```
+
+```Bash
 guillaume@vagrant:~/$ cat README.md
 # My title
 * Hello
@@ -125,7 +128,8 @@ guillaume@vagrant:~/$ cat README.html
 <li>Hello</li>
 <li>Bye</li>
 </ol>
-guillaume@vagrant:~/$ 
+guillaume@vagrant:~/$
+``` 
 Spacing and new lines between HTML tags don’t need to be exactly this one
 
 ### 4. Simple text
