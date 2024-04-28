@@ -63,21 +63,23 @@ guillaume@vagrant:~/$
 Spacing and new lines between HTML tags don’t need to be exactly this one
 
 ### 2. Unordered listing
-#advanced
-Improve markdown2html.py by parsing Unordered listing syntax for generating HTML:
+Improve `markdown2html.py` by parsing Unordered listing syntax for generating HTML:
 
-Syntax: (you can assume it will be strictly this syntax)
+**Syntax**: (you can assume it will be strictly this syntax)
 
 Markdown:
-
+```Bash
 - Hello
 - Bye
+```
 HTML generated:
-
+```
 <ul>
     <li>Hello</li>
     <li>Bye</li>
 </ul>
+```
+```
 guillaume@vagrant:~/$ cat README.md
 # My title
 - Hello
@@ -91,6 +93,8 @@ guillaume@vagrant:~/$ cat README.html
 <li>Bye</li>
 </ul>
 guillaume@vagrant:~/$ 
+
+```
 Spacing and new lines between HTML tags don’t need to be exactly this one
 
 ### 3. Ordered listing
